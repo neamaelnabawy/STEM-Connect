@@ -8,6 +8,7 @@
 body{
     background: linear-gradient(135deg,#F8FAFC,#EEF4FF,#F4F1FF);
     position: relative;
+    overflow-x: hidden;
 }
 
 .logo{
@@ -168,4 +169,19 @@ opacity: 0.08;
 border-radius: 50%;
 bottom: -100px;
 right: -100px;
+}
+
+@media (max-width: 576px){
+    .login-box{
+        padding: 30px 22px;
+        border-radius: 18px;
+    }
+
+    .login-box h1{
+        font-size: 30px;
+    }
+
+    .login-box h2{
+        font-size: 24px;
+    }
 }

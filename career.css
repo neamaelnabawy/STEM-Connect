@@ -2,11 +2,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Poppins, sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 body{
     margin: 0;
+    background-color: #ffffff;
 }
 
 /* ---------- Navbar ---------- */
@@ -29,6 +30,7 @@ body{
     border-radius: 24px;
     padding: 0 35px;
     box-shadow: 0 10px 35px rgba(37,99,235,.08);
+    position: relative;
 }
 
 .logo{
@@ -102,6 +104,7 @@ body{
 
 .nav-icons{
     display:flex;
+    align-items:center;
     gap:12px;
 }
 
@@ -122,6 +125,27 @@ body{
     background:#2563EB;
     color:white;
     transform:translateY(-3px);
+}
+
+.nav-hamburger {
+    display: none;
+    background: #F8FAFC;
+    border: 1px solid #E5E7EB;
+    border-radius: 14px;
+    width: 46px;
+    height: 46px;
+    font-size: 1.5rem;
+    color: #4B5563;
+    cursor: pointer;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    transition: .3s;
+}
+
+.nav-hamburger:hover {
+    background: #2563EB;
+    color: white;
 }
 
 .user-menu{ position:relative; }
@@ -182,6 +206,37 @@ body{
 .user-dropdown a:hover{
     background:#FEE2E2;
     color:#DC2626;
+}
+
+@media(max-width:991px){
+    .nav-hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: calc(100% + 12px);
+        left: 20px;
+        right: 20px;
+        flex-direction: column;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        border: 1px solid #E5E7EB;
+        border-radius: 18px;
+        padding: 15px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        display: none;
+        z-index: 1050;
+    }
+
+    .nav-links.nav-open {
+        display: flex;
+    }
+
+    .nav-links a {
+        width: 100%;
+        text-align: center;
+    }
 }
 
 /* ---- Hero ---- */
@@ -265,7 +320,7 @@ body{
     transition: .3s;
     box-shadow: 0 20px 35px rgba(124,58,237,.2);
     border: none;
-    font-family: Poppins, sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
@@ -465,7 +520,7 @@ body{
     border: none;
     font-weight: 600;
     cursor: pointer;
-    font-family: Poppins, sans-serif;
+    font-family: 'Poppins', sans-serif;
     transition: .3s;
 }
 
@@ -566,7 +621,7 @@ body{
     border-radius: 50px;
     font-weight: 600;
     cursor: pointer;
-    font-family: Poppins, sans-serif;
+    font-family: 'Poppins', sans-serif;
     transition: .3s;
 }
 

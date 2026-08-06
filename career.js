@@ -316,7 +316,7 @@ function openRoadmapModal(trackKey){
     const banner = document.getElementById("roadmap-modal-banner");
     const body = document.getElementById("roadmap-modal-body");
 
-    banner.className = `roadmap-modal-banner ${trackKey === "software" ? "" : ""}`;
+    banner.className = `roadmap-modal-banner`;
     banner.style.background = getComputedGradient(track.color);
     banner.innerHTML = `
         <i class="bi ${track.icon}"></i>

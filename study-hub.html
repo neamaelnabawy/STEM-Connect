@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="study-hub.css">
+    <title>STEM Connect | study</title>
+</head>
+<body>
+
+<!---- navbar ---->
+<nav class="navbar-custom">
+    <div class="container">
+        <div class="navbar-content">
+
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    SC
+                </div>
+                <div class="logo-text">
+                    <h2>STEM Connect</h2>
+                </div>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="study-hub.html" class="active">Study</a></li>
+                <li><a href="opportunities.html">Opportunities</a></li>
+                <li><a href="career.html">Career Compass</a></li>
+                <li><a href="fun-zone.html">Fun Zone</a></li>
+                <li><a href="#" class="nav-disabled">STEM Calendar</a></li>
+            </ul>
+
+            <div class="nav-icons">
+                <a href="#">
+                    <i class="bi bi-search"></i>
+                </a>
+                <div id="authArea">
+                    <a href="login.html" id="guestAuthLink">
+                        <i class="bi bi-person-circle"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!---- hero section ---->
+<section class="study-hero">
+    <div class="container-xxl">
+        <div class="row align-items-center">
+
+            <div class="col-lg-7 hero-content">
+                <span class="hero-tag"> Study Dashboard</span>
+                <h1>Organize your studies, stay focused, and <br> achieve more.</h1>
+                <p>Plan your study sessions, manage tasks, review notes, practice with <br>flashcards, and run focused study sessions - all in one place</p>
+                <a href="#planner" class="start-btn">Start Planning</a>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="overview-card">
+                    <h3>Today's Overview</h3>
+                    <div class="overview-item">
+                        <span>Study Sessions</span>
+                        <strong>5</strong>
+                    </div>
+                    <div class="overview-item">
+                        <span>Tasks</span>
+                        <strong>3</strong>
+                    </div>
+                    <div class="overview-item">
+                        <span>Notes</span>
+                        <strong>2</strong>
+                    </div>
+                    <div class="overview-item">
+                        <span>Focus Sessions</span>
+                        <strong>2 Done</strong>
+                    </div>
+                    <div class="progress-area">
+                        <div class="progress-text">
+                            <span>Today's Progress</span>
+                            <span>60%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!---- Study Planner ---->
+<section class="study-planner" id="planner">
+    <div class="container">
+        <div class="planner-header">
+            <div class="planner-header-text">
+                <h2>Study Planner</h2>
+                <p>Plan your study sessions and stay on track throughout the week</p>
+            </div>
+            <button class="add-session-btn" id="open-modal-btn">
+                + Add Session
+            </button>
+        </div>
+        <div class="planner-box">
+            <div class="days-tabs">
+                <button class="day active" data-day="Mon">Mon</button>
+                <button class="day" data-day="Tue">Tue</button>
+                <button class="day" data-day="Wed">Wed</button>
+                <button class="day" data-day="Thu">Thu</button>
+                <button class="day" data-day="Fri">Fri</button>
+                <button class="day" data-day="Sat">Sat</button>
+                <button class="day" data-day="Sun">Sun</button>
+            </div>
+            <div class="sessions-container" id="sessions-container">
+                <small id="text">Your sessions will be displayed here.</small>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal" id="session-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Add Study Session</h3>
+            <button class="close-btn" id="close-modal-btn">&times;</button>
+        </div>
+        <form class="session-form">
+            <div class="form-group">
+                <label>Subject</label>
+                <select>
+                    <option selected disabled>Select Subject</option>
+                    <option>Mathematics</option>
+                    <option>Mechanics</option>
+                    <option>Physics</option>
+                    <option>Chemistry</option>
+                    <option>Biology</option>
+                    <option>Earth Science</option>
+                    <option>Arabic</option>
+                    <option>English</option>
+                    <option>German</option>
+                    <option>French</option>
+                    <option>Religion</option>
+                    <option>CS</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Date</label>
+                <input type="date" id="date">
+            </div>
+            <div class="time-row">
+                <div class="form-group">
+                    <label>Start Time</label>
+                    <input type="time">
+                </div>
+                <div class="form-group">
+                    <label>End Time</label>
+                    <input type="time">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Topic/Chapter</label>
+                <input type="text" placeholder="Example: Chapter 3">
+            </div>
+            <div class="form-buttons">
+                <button type="button" class="cancel-btn" id="cancel-btn">Cancel</button>
+                <button type="submit" class="save-btn" id="add-btn">Add Session</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!----To-Do-List---->
+<section class="todo-section" id="todo">
+    <div class="container">
+        <div class="todo-header">
+            <div class="todo-header-text">
+                <h2>To-Do-List</h2>
+                <p>Manage your daily tasks and stay productive</p>
+            </div>
+            <button class="add-task-btn" id="open-todo-modal">
+                + Add Task
+            </button>
+        </div>
+        <div class="todo-box">
+            <div class="todo-column high">
+                <div class="priority-title high-title">
+                    <i class="bi bi-circle-fill"></i>
+                    High Priority
+                </div>
+                <div id="highTasks">
+                    <div class="empty-task">
+                        No tasks yet
+                    </div>
+                </div>
+            </div>
+            <div class="todo-column medium">
+                <div class="priority-title medium-title">
+                    <i class="bi bi-circle-fill"></i>
+                    Medium Priority
+                </div>
+                <div id="mediumTasks">
+                    <div class="empty-task">
+                        No tasks yet
+                    </div>
+                </div>
+            </div>
+            <div class="todo-column low">
+                <div class="priority-title low-title">
+                    <i class="bi bi-circle-fill"></i>
+                    Low Priority
+                </div>
+                <div id="lowTasks">
+                    <div class="empty-task">
+                        No tasks yet
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal-todo" id="todo-modal">
+    <div class="todo-modal-content">
+        <div class="todo-modal-header">
+            <h3>Add New Task</h3>
+            <button class="todo-close-btn" id="close-todo-modal-btn">&times;</button>
+        </div>
+        <form class="todo-task-form">
+            <div class="todo-form-group">
+                <label>Task Title</label>
+                <input type="text" id="todo-title" placeholder="Example: Finish Physics Homework">
+            </div>
+            <div class="todo-form-group">
+                <label>Due Date</label>
+                <input type="date" id="todo-date">
+            </div>
+            <div class="todo-form-group">
+                <label>Priority</label>
+                <select id="todo-priority">
+                    <option selected disabled>Select Priority</option>
+                    <option value="high">High Priority</option>
+                    <option value="medium">Medium Priority</option>
+                    <option value="low">Low Priority</option>
+                </select>
+            </div>
+            <div class="todo-form-group">
+                <label>Description</label>
+                <textarea id="todo-description" rows="4" placeholder="Write a short description..."></textarea>
+            </div>
+            <div class="todo-form-btns">
+                <button type="button" class="todo-cancel-btn" id="cancel-todo-btn">Cancel</button>
+                <button type="submit" class="todo-save-btn">Add Task</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!---- Notes ---->
+<section class="notes-sec" id="notes">
+    <div class="container">
+        <div class="notes-header">
+            <div>
+                <h2>Notes</h2>
+                <p>Capture your ideas, summaries, and important study Points</p>
+            </div>
+            <button class="add-note-btn" id="open-note-modal">+ New Note</button>
+        </div>
+        <div class="notes-box">
+            <div class="notes-search">
+                <i class="bi bi-search"></i>
+                <input type="text" id="search-note" placeholder="Search notes ...">
+            </div>
+            <div class="notes-container" id="notes-container">
+                <div class="empty-notes">
+                    No notes yet
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="notes-modal" id="notes-modal">
+    <div class="notes-modal-content">
+        <div class="notes-modal-header">
+            <h3>Add New Note</h3>
+            <button class="notes-close-btn" id="close-note-modal">&times;</button>
+        </div>
+        <form class="notes-form" id="notes-form">
+            <div class="notes-form-group">
+                <label>Title</label>
+                <input type="text" id="note-title" placeholder="Example: Newton's Laws">
+            </div>
+            <div class="notes-form-group">
+                <label>Subject</label>
+                <select id="note-subject">
+                    <option selected disabled>Select Subject</option>
+                    <option>Mathematics</option>
+                    <option>Mechanics</option>
+                    <option>Physics</option>
+                    <option>Chemistry</option>
+                    <option>Biology</option>
+                    <option>Earth Science</option>
+                    <option>English</option>
+                    <option>Arabic</option>
+                    <option>German</option>
+                    <option>French</option>
+                    <option>Religion</option>
+                    <option>CS</option>
+                </select>
+            </div>
+            <div class="notes-form-group">
+                <label>Note</label>
+                <textarea  id="note-content" rows="7" placeholder="Write your note here ..."></textarea>
+            </div>
+            <div class="notes-form-btns">
+                <button type="button" class="notes-cancel-btn" id="cancel-note-btn">Cancel</button>
+                <button type="submit" class="notes-save-btn">Save Note</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!---- Flashcards ---->
+<section class="flashcards-sec" id="flashcards">
+    <div class="container">
+        <div class="flashcards-header">
+            <div class="flashcards-header-text">
+                <h2>Flashcards</h2>
+                <p>Create your own study flashcards and review them anytime</p>
+            </div>
+            <button class="add-flashcard-btn" id="open-flashcard-modal">
+                + New Flashcard
+            </button>
+        </div>
+        <div class="flashcards-box">
+            <div class="flashcards-search">
+                <i class="bi bi-search"></i>
+                <input type="text" id="search-flashcard" placeholder="Search flashcards...">
+            </div>
+            <div class="flashcards-container" id="flashcards-container">
+                <div class="empty-flashcards">
+                    No flashcards yet
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="flashcards-modal" id="flashcards-modal">
+    <div class="flashcards-modal-content">
+        <div class="flashcards-modal-header">
+            <h3>Add New Flashcard</h3>
+            <button class="flashcards-close-btn" id="close-flashcard-modal">&times;</button>
+        </div>
+        <form class="flashcards-form" id="flashcards-form">
+            <div class="flashcards-form-group">
+                <label>Subject</label>
+                <select id="flashcard-subject">
+                    <option selected disabled>Select Subject</option>
+                    <option>Mathematics</option>
+                    <option>Mechanics</option>
+                    <option>Physics</option>
+                    <option>Chemistry</option>
+                    <option>Biology</option>
+                    <option>Earth Science</option>
+                    <option>English</option>
+                    <option>Arabic</option>
+                    <option>German</option>
+                    <option>French</option>
+                    <option>Religion</option>
+                    <option>CS</option>
+                </select>
+            </div>
+            <div class="flashcards-form-group">
+                <label>Question</label>
+                <textarea id="flashcard-question" rows="4" placeholder="Write your question..."></textarea>
+            </div>
+            <div class="flashcards-form-group">
+                <label>Answer</label>
+                <textarea id="flashcard-answer" rows="5" placeholder="Write the answer..."></textarea>
+            </div>
+            <div class="flashcards-form-btns">
+                <button type="button" class="flashcards-cancel-btn" id="cancel-flashcard-btn">Cancel</button>
+                <button type="submit" class="flashcards-save-btn">Save Flashcard</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!---- Focus Sessions ---->
+<section class="study-rooms-sec" id="focus-sessions">
+    <div class="container">
+        <div class="study-rooms-header">
+            <div>
+                <h2>Focus Sessions</h2>
+                <p>Start a focused study session with a timer, and track how many you complete</p>
+            </div>
+            <button class="create-room-btn" id="open-room-modal">
+                + New Session
+            </button>
+        </div>
+        <div class="study-rooms-box">
+            <div class="room-search">
+                <i class="bi bi-search"></i>
+                <input type="text" id="search-room" placeholder="Search focus sessions">
+            </div>
+            <div class="rooms-container" id="rooms-container">
+                <div class="empty-rooms">
+                    No focus sessions yet
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="room-modal" id="room-modal">
+    <div class="room-modal-content">
+        <div class="room-modal-header">
+            <h3>Start a Focus Session</h3>
+            <button class="room-close-btn" id="close-room-modal">&times;</button>
+        </div>
+        <form class="room-form" id="room-form">
+            <div class="room-form-group">
+                <label>Session Name</label>
+                <input type="text" id="room-name" placeholder="Example: Physics Revision">
+            </div>
+            <div class="room-form-group">
+                <label>Subject</label>
+                <select id="room-subject">
+                    <option selected disabled>Select Subject</option>
+                    <option>Mathematics</option>
+                    <option>Mechanics</option>
+                    <option>Physics</option>
+                    <option>Chemistry</option>
+                    <option>Biology</option>
+                    <option>Earth Science</option>
+                    <option>English</option>
+                    <option>Arabic</option>
+                    <option>German</option>
+                    <option>French</option>
+                    <option>Religion</option>
+                    <option>CS</option>
+                </select>
+            </div>
+            <div class="room-form-group">
+                <label>Duration</label>
+                <select id="room-duration">
+                    <option selected disabled>Select Duration</option>
+                    <option value="15">15 minutes</option>
+                    <option value="25">25 minutes (Pomodoro)</option>
+                    <option value="45">45 minutes</option>
+                    <option value="60">60 minutes</option>
+                </select>
+            </div>
+            <div class="room-form-group">
+                <label>Goal</label>
+                <textarea id="room-description" rows="5" placeholder="What do you want to achieve in this session ..."></textarea>
+            </div>
+            <div class="room-form-btns">
+                <button type="button" class="room-cancel-btn" id="cancel-room-btn">Cancel</button>
+                <button  type="submit" class="room-save-btn">Create Session</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<!-- ---- Footer ---- -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-about">
+            <div class="footer-logo">
+                <div class="logo-box">SC</div>
+                <h2>STEM Connect</h2>
+            </div>
+            <p>Empowering STEM students with smart studying tools, exciting opportunities, and career guidance to achieve their dreams.</p>
+        </div>
+
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="study-hub.html">Study</a></li>
+                <li><a href="opportunities.html">Opportunities</a></li>
+                <li><a href="career.html">Career Compass</a></li>
+                <li><a href="fun-zone.html">Fun Zone</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-links">
+            <h3>Explore</h3>
+            <ul>
+                <li><a href="#planner">Study Planner</a></li>
+                <li><a href="#todo">To-Do List</a></li>
+                <li><a href="#notes">Notes</a></li>
+                <li><a href="#flashcards">Flashcards</a></li>
+                <li><a href="#focus-sessions">Study Rooms</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-contact">
+            <h3>Contact</h3>
+            <p><i class="fa-solid fa-location-dot"></i>Egypt</p>
+            <p><i class="fa-solid fa-envelope"></i>stemconnect@gmail.com</p>
+            <p><i class="fa-solid fa-phone"></i>+20 100 000 0000</p>
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#"><i class="fa-brands fa-github"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 STEM Connect. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".nav-disabled, .footer-disabled").forEach(function (link) {
+        link.addEventListener("click", function (e) {
+            e.preventDefault();
+        });
+    });
+
+    const authArea = document.getElementById("authArea");
+    if (!authArea) return;
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    if (!currentUser) return;
+    const initial = (currentUser.name || "U").charAt(0).toUpperCase();
+
+    authArea.innerHTML = `
+        <div class="user-menu">
+            <button class="user-btn" id="userMenuBtn" type="button" data-tooltip="${currentUser.name}">
+                <span class="user-avatar">${initial}</span>
+            </button>
+            <div class="user-dropdown" id="userDropdown">
+                <a href="#" id="logoutBtn">
+                    <i class="bi bi-box-arrow-right"></i> Logout
+                </a>
+            </div>
+        </div>
+    `;
+
+    const userMenuBtn = document.getElementById("userMenuBtn");
+    const userDropdown = document.getElementById("userDropdown");
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    userMenuBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        userDropdown.classList.toggle("show");
+    });
+
+    logoutBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        localStorage.removeItem("currentUser");
+        window.location.href = "login.html";
+    });
+
+    window.addEventListener("click", function (e) {
+        if (!e.target.closest("#authArea")) {
+            userDropdown.classList.remove("show");
+        }
+    });
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="study-hub.js"></script>
+</body>
+</html>

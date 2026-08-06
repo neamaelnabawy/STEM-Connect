@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="opportunities.css">
+    <title>STEM Connect | Opportunities</title>
+</head>
+<body>
+    
+    <!---- navbar ---->
+<nav class="navbar-custom">
+    <div class="container">
+        <div class="navbar-content">
+
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    SC
+                </div>
+                <div class="logo-text">
+                    <h2>STEM Connect</h2>
+                </div>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="study-hub.html">Study</a></li>
+                <li><a href="opportunities.html" class="active">Opportunities</a></li>
+                <li><a href="career.html">Career Compass</a></li>
+                <li><a href="fun-zone.html">Fun Zone</a></li>
+                <li><a href="#" class="nav-disabled">STEM Calendar</a></li>
+            </ul>
+
+            <div class="nav-icons">
+                <a href="#">
+                    <i class="bi bi-search"></i>
+                </a>
+                <div id="authArea">
+                    <a href="login.html" id="guestAuthLink">
+                        <i class="bi bi-person-circle"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!---- hero section ---->
+<section class="oppor-hero">
+    <div class="hero-content">
+        <span class="hero-badge">
+            Your Gateway to Global Opportunities
+        </span>
+        <h1>Discover<span>opportunities</span> That shape your future </h1>
+        <p>Explore scholarships, hackathons, competitions, internships, and free courses which made to help student learn, grow, and achieve more</p>
+        <div class="hero-btns">
+            <a href="#categories" class="btn-primary">Explore Opportunities</a>
+            <a href="#opportunities-grid" class="btn-secondary">Latest deadlines</a>
+        </div>
+        <div class="hero-status">
+            <div class="stat-cards">
+                <h3>+500</h3>
+                <p>Opportunities</p>
+            </div>
+            <div class="stat-cards">
+                <h3>+50</h3>
+                <p>Countries</p>
+            </div>
+            <div class="stat-cards">
+                <h3>Updated</h3>
+                <p>Every Week</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero-img">
+        <img src="opportunities-illutration.png" alt="hero-img">
+    </div>
+</section>
+
+<!---- Opportunities listing ---->
+<section class="opportunities-section" id="categories">
+    <div class="container">
+        <div class="section-title">
+            <h2>Explore Opportunities</h2>
+            <p>Browse scholarships, hackathons, competitions, internships, and free courses handpicked for STEM students</p>
+        </div>
+
+        <div class="opportunities-search">
+            <i class="bi bi-search"></i>
+            <input type="text" id="search-opportunity" placeholder="Search opportunities...">
+        </div>
+
+        <div class="category-tabs" id="category-tabs">
+            <button class="tab-btn active" data-category="all">
+                All
+            </button>
+            <button class="tab-btn" data-category="scholarships">
+                <i class="bi bi-mortarboard"></i> Scholarships
+            </button>
+            <button class="tab-btn" data-category="hackathons">
+                <i class="bi bi-rocket-takeoff"></i> Hackathons
+            </button>
+            <button class="tab-btn" data-category="competitions">
+                <i class="bi bi-trophy"></i> Competitions
+            </button>
+            <button class="tab-btn" data-category="internships">
+                <i class="bi bi-briefcase"></i> Internships
+            </button>
+            <button class="tab-btn" data-category="courses">
+                <i class="bi bi-journal-bookmark"></i> Courses
+            </button>
+        </div>
+
+        <div class="opportunities-grid" id="opportunities-grid">
+        </div>
+
+        <div class="empty-opportunities" id="empty-opportunities">
+            No opportunities match your search
+        </div>
+    </div>
+</section>
+
+<div class="opportunity-modal" id="opportunity-modal">
+    <div class="opportunity-modal-content">
+        <button class="opportunity-modal-close" id="close-opportunity-modal" type="button">&times;</button>
+        <div class="opportunity-modal-banner" id="opportunity-modal-banner"></div>
+        <div class="opportunity-modal-body" id="opportunity-modal-body">
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".nav-disabled, .footer-disabled").forEach(function (link) {
+        link.addEventListener("click", function (e) {
+            e.preventDefault();
+        });
+    });
+
+    const authArea = document.getElementById("authArea");
+    if (!authArea) return;
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    if (!currentUser) return;
+    const initial = (currentUser.name || "U").charAt(0).toUpperCase();
+
+    authArea.innerHTML = `
+        <div class="user-menu">
+            <button class="user-btn" id="userMenuBtn" type="button" data-tooltip="${currentUser.name}">
+                <span class="user-avatar">${initial}</span>
+            </button>
+            <div class="user-dropdown" id="userDropdown">
+                <a href="#" id="logoutBtn">
+                    <i class="bi bi-box-arrow-right"></i> Logout
+                </a>
+            </div>
+        </div>
+    `;
+
+    const userMenuBtn = document.getElementById("userMenuBtn");
+    const userDropdown = document.getElementById("userDropdown");
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    userMenuBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        userDropdown.classList.toggle("show");
+    });
+
+    logoutBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        localStorage.removeItem("currentUser");
+        window.location.href = "login.html";
+    });
+
+    window.addEventListener("click", function (e) {
+        if (!e.target.closest("#authArea")) {
+            userDropdown.classList.remove("show");
+        }
+    });
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="opportunities.js"></script>
+</body>
+</html>
